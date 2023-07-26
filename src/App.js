@@ -1,23 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const Child = (props) => {
+  return (
+    <div className='books'>
+      <h1>{props.title}</h1>
+    </div>
+  )
+
+}
+
+const GrandChild = (props) => {
+  return (
+    <>
+    <h1>{props.title}</h1>
+    <h2>{props.author}</h2>
+    </>
+  )
+}
+
+const ChildVTwo = (props) => {
+  return (
+		<div className='books'>
+			<h1>{props.title}</h1>
+      <GrandChild
+      author={props.author}
+      title={props.title}
+      />
+		</div>
+	);
+}
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Child
+      title="Halo: The Fall of Reach"
+      />
+      <Child
+      title="Halo: Shadows of Reach"
+      />
+      <ChildVTwo
+      author="Troy Denning"
+      title="Halo: Divine Wind"
+      />
     </div>
   );
 }
